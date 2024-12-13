@@ -1,6 +1,7 @@
 # Secret Duck
 
-Convert a Keepass database into DuckDB secrets.
+Convert a Keepass database into [DuckDB secrets](https://duckdb.org/docs/configuration/secrets_manager.html) that may
+be loaded into DuckDB using its secret manager feature.
 
 # Installation
 
