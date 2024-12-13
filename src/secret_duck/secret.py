@@ -8,13 +8,13 @@ class Secret:
     """
 
     def __init__(
-            self,
-            name: str,
-            secret_type: str,
-            persistent: bool = False,
-            replace: bool = False,
-            if_not_exists: bool = False,
-            **keys,
+        self,
+        name: str,
+        secret_type: str,
+        persistent: bool = False,
+        replace: bool = False,
+        if_not_exists: bool = False,
+        **keys,
     ):
         self._name = name
         self._type = secret_type
@@ -44,15 +44,11 @@ class Secret:
     def if_not_exists(self) -> str:
         return " IF NOT EXISTS" if self._if_not_exists else ""
 
-    def iter_keys(self):
-        yield 'TYPE', self._type
-        yield from self._keys.items()
-
     @property
     def keys(self) -> str:
         return ",\n  ".join(
             f"{key.upper()} '{value}'"
-            for key, value in self.iter_keys()
+            for key, value in self._keys.items()
             if value is not None
         )
 
@@ -72,6 +68,7 @@ class Secret:
         return textwrap.dedent(
             f"""
 CREATE{self.replace} {self.persistent} SECRET{self.if_not_exists} {self.name} (
+  TYPE {self.type}
   {self.keys}
 );""".strip()
         )

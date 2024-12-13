@@ -25,14 +25,16 @@ def get_args() -> argparse.Namespace:
         choices=("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"),
     )
     parser.add_argument("--password")
-    parser.add_argument("--type", "-t", help="DuckDB secret type e.g. S3", required=True)
+    parser.add_argument(
+        "--type", "-t", help="DuckDB secret type e.g. S3", required=True
+    )
     parser.add_argument("--persistent", action="store_true")
     parser.add_argument("--replace", action="store_true")
     parser.add_argument("--if_not_exists", action="store_true")
     parser.add_argument(
         "--keys",
         "-k",
-        help="JSON dictionary of key-value pairs e.g. {\"region\":\"eu-west-2\"}",
+        help='JSON dictionary of key-value pairs e.g. {"region":"eu-west-2"}',
         type=json.loads,
         default=dict(),
     )
@@ -45,7 +47,7 @@ def entry_title_to_sql_name(title: str) -> str:
     Convert any string into a valid SQL name.
     """
     name = title.replace(" ", "_").replace("-", "_").lower()
-    name = ''.join((c for c in name if c.isalnum() or c == '_'))
+    name = "".join((c for c in name if c.isalnum() or c == "_"))
     return name
 
 
