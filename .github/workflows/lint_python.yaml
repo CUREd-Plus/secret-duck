@@ -3,8 +3,9 @@ name: Lint Python code
 on: [push]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - run: pip install flake8
     - run: flake8 src
