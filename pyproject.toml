@@ -10,7 +10,8 @@ build-backend = "setuptools.build_meta"
 name = "secret-duck"
 description = "MQTT listener to save data"
 readme = "README.md"
-version = "0.0.2"
+# https://packaging.python.org/en/latest/discussions/versioning/
+version = "0.0.2post1"
 dependencies = [
     "pykeepass==4.*"
 ]

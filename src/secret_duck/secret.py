@@ -1,6 +1,3 @@
-import textwrap
-
-
 class Secret:
     """
     Secret
@@ -44,13 +41,18 @@ class Secret:
     def if_not_exists(self) -> str:
         return " IF NOT EXISTS" if self._if_not_exists else ""
 
+    def iter_keys(self):
+        # The type can't have quotes
+        yield f"TYPE {self.type}"
+        for key, value in self._keys.items():
+            # Skip null values
+            if value is None:
+                continue
+            yield f"{key.upper()} '{value}'"
+
     @property
     def keys(self) -> str:
-        return ",\n  ".join(
-            f"{key.upper()} '{value}'"
-            for key, value in self._keys.items()
-            if value is not None
-        )
+        return ",\n  ".join(self.iter_keys())
 
     @property
     def type(self) -> str:
@@ -65,10 +67,7 @@ class Secret:
         Generate CREATE SECRET syntax in SQL
         https://duckdb.org/docs/sql/statements/create_secret.html
         """
-        return textwrap.dedent(
-            f"""
+        return f"""
 CREATE{self.replace} {self.persistent} SECRET{self.if_not_exists} {self.name} (
-  TYPE {self.type}
   {self.keys}
 );""".strip()
-        )
