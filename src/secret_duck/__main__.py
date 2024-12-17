@@ -21,7 +21,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("keepass_file", type=Path, help="Keepass database file")
     parser.add_argument(
         "--log_level",
-        default="INFO",
+        default="WARNING",
         choices=("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"),
     )
     parser.add_argument("--password")
