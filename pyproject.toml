@@ -11,7 +11,7 @@ name = "secret-duck"
 description = "MQTT listener to save data"
 readme = "README.md"
 # https://packaging.python.org/en/latest/discussions/versioning/
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
     "pykeepass==4.*"
 ]
