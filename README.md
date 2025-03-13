@@ -1,10 +1,8 @@
 # Secret Duck
 
-Convert a Keepass database into [DuckDB secrets](https://duckdb.org/docs/configuration/secrets_manager.html) that may
-be loaded into DuckDB using its secret manager feature.
+Secret Duck is a tool to convert a Keepass database into [DuckDB secrets](https://duckdb.org/docs/configuration/secrets_manager.html) that may be loaded into DuckDB using its secret management feature. This enables secure remote resources to be queried more easily when processing data using DuckDB.
 
-The tool will generate [`CREATE SECRET` statements](https://duckdb.org/docs/sql/statements/create_secret.html) in SQL which define secrets used for DuckDB.
-For example:
+The tool will generate [`CREATE SECRET` statements](https://duckdb.org/docs/sql/statements/create_secret.html) in SQL which define secrets used for DuckDB. For example:
 
 ```sql
 CREATE OR REPLACE PERSISTENT SECRET my_secret (
@@ -16,6 +14,8 @@ CREATE OR REPLACE PERSISTENT SECRET my_secret (
 ```
 
 # Installation
+
+The tool may be installed from the [Python Package Index](https://pypi.org/project/secret-duck/) (PyPI) using the [package installer](https://pip.pypa.io/en/stable/cli/pip_install/).
 
 ```bash
 pip install secret-duck
