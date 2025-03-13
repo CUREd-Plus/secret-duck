@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "secret-duck"
-description = "MQTT listener to save data"
+description = "A command line tool to convert a Keepass database into SQL secret statements for DuckDB."
 readme = "README.md"
 # https://packaging.python.org/en/latest/discussions/versioning/
 version = "0.0.4"
