@@ -56,5 +56,5 @@ secret-duck my_secrets.kdbx --type S3 --keys {\"endpoint\": \"s3.amazonaws.com\"
 To create AWS S3 secrets and save the results to an SQL file
 
 ```bash
-secret-duck my_secrets.kdbx --type S3 --persistent --replace --keys {\"region\": \"eu-west-2\", \"endpoint\": \"s3.amazonaws.com\"} > secrets.sql
+secret-duck my_secrets.kdbx --type S3 --persistent --replace --keys "{\"region\": \"eu-west-2\", \"endpoint\": \"s3.amazonaws.com\"}" > secrets.sql
 ```
